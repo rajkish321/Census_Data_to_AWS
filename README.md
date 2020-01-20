@@ -27,14 +27,13 @@ Run 'createDB.py' to create the tables in your Athena database.
 Next, the data which was in S3 was loaded into the Athena database to create an inflow and outflow table. This was done with boto3 by uploading the query written in "inflow_table.ddl" and "outflow_table.ddl" (these are create table queries).
 ##### 4) Run a simple aggregation or query on the Census data and include the results in your submission.
 ```
-SELECT curr_state, curr_county, SUM(curr_county_pop_est) AS pop
-FROM (SELECT DISTINCT curr_state,curr_county,curr_county_pop_est
-FROM censusdb.inflow
-WHERE curr_state = 'California')
-GROUP BY curr_state, curr_county
-ORDER BY 3 DESC
+SELECT curr_state,SUM(curr_county_pop_est) AS pop
+FROM (SELECT DISTINCT curr_state,curr_county_pop_est
+FROM censusdb.inflow)
+GROUP BY curr_state
+ORDER BY 1
 ```
-This query will return all of California's counties sorted by population in descending order. The result of this query is located in query_result/query_ex.csv
+This query will return all populations of US states/regions. The result of this query is located in query_result/query_ex.csv
 
 
 ##### 5) How much did this cost to run?
