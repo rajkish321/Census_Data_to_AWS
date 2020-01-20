@@ -18,7 +18,7 @@ WHERE curr_state = 'California')
 GROUP BY curr_state, curr_county
 ORDER BY 3 DESC
 ```
-This query will return all of California's counties sorted by population in descending order. The result of this is located in query_result/query_example.csv
+This query will return all of California's counties sorted by population in descending order. The result of this is located in query_result/query_ex.csv
 
 
 
@@ -28,7 +28,7 @@ To find the cost of this query, we can check the "History" tab in Athena, and se
 
 
 
-## Setting up AWS
+### Setting up AWS
 In your cmd:
 ```
 pip install awscli
@@ -61,7 +61,7 @@ AWS Services used
   ```
 ---
 
-## Change inflow, outflow, and output bucket names in the following files. The bucket names need to be unique across all of S3:
+### Change inflow, outflow, and output bucket names in the following files. The bucket names need to be unique across all of S3:
 
   - cloudformation/cloudformation.txt
   - inflow_bucket.txt
@@ -75,11 +75,11 @@ AWS Services used
   ```
 
 ---
-## CloudFormation (need to be signed into aws) done
-Create a cloudformation stack to set up the bucket in S3 and the database in Athena
+### CloudFormation (make sure you are signed into aws)
+Create a cloudformation stack to set up the buckets in S3 and the database in Athena
   - run create_stack.py
 
-## Data Prep
+### Data Prep
 Create CSV files from the inflow and outflow excel files
   - run excel_to_csv.py  
 
@@ -90,11 +90,11 @@ Upload the CSV files to your buckets in S3
   - run upload_to_s3.py
 
 
-## Data Processing
+### Data Processing
 Create tables in your database in Athena
   - run createDB.py
 ---
-## Query
+### Query
 
   -You can query through Amazon Athena or query.py
 
@@ -104,3 +104,18 @@ Create tables in your database in Athena
   - Query through python script:
     - In the queries folder, change the query.ddl file to the query you desire (using notepad again)
     - Run the python script and the output will be in your S3 output bucket
+
+---
+## Exercise 2 questions:
+
+##### Would you propose using AWS Neptune or Neo4J for building a graph of the data?
+
+I would propose using AWS Neptune because it is fully managed and we will only be charged for what we use.
+
+However, if we want to have the flexibility of switching cloud providers, we should choose Neo4J, as it is also a good graph database software.
+
+##### How would you load data into your proposed graph database?
+
+Similar to the way we uploaded in Athena, we would have csv files which contained the properties for each node and edge in the graph database. For example, we would have the county node csv files contain the FIPS county code, population estimate, nonmovers estimate, etc.
+
+##### How would you design the graph relationships of the data?
