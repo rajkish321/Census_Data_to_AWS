@@ -1,0 +1,22 @@
+{
+    "Resources": {
+        "InflowBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+	   	"BucketName" : "census-inflow-data"	
+	     }
+        },
+   "OutflowBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+	   	"BucketName" : "census-outflow-data"	
+	     }
+        },
+   "CensusData": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+	   	"BucketName" : "census-flow-data"	
+	     }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS censusdb.outflow(
+  `curr_state_code` string,
+  `curr_fips_county_code` string,
+  `prev_region_code` string,
+  `prev_fips_county_code` string,
+  `curr_state` string,
+  `curr_county` string,
+  `curr_county_pop_est` int,
+  `curr_county_pop_moe` int,
+  `curr_county_nonmover_est` int,
+  `curr_county_nonmover_moe` int,
+  `curr_mover_from_us_est` int,
+  `curr_mover_from_us_moe` int,
+  `curr_mover_from_same_county_est` int,
+  `curr_mover_from_same_county_moe` int,
+  `curr_mover_from_diff_county_est` int,
+  `curr_mover_from_diff_county_moe` int,
+  `curr_mover_from_diff_state_est` int,
+  `curr_mover_from_diff_state_moe` int,
+  `curr_mover_from_abroad_est` int,
+  `curr_mover_from_abroad_moe` int,
+  `prev_region` string,
+  `prev_county` string,
+  `prev_county_pop_est` int,
+  `prev_county_pop_moe` int,
+  `prev_county_nonmover_est` int,
+  `prev_county_nonmover_moe` int,
+  `prev_mover_to_us_est` int,
+  `prev_mover_to_us_moe` int,
+  `prev_mover_from_to_county_est` int,
+  `prev_mover_to_same_county_moe` int,
+  `prev_mover_to_diff_county_est` int,
+  `prev_mover_to_diff_county_moe` int,
+  `prev_mover_to_diff_state_est` int,
+  `prev_mover_to_diff_state_moe` int,
+  `prev_mover_to_puerto_rico_est` int,
+  `prev_mover_to_puerto_rico_moe` int,
+  `county_to_county_flow_est` int,
+  `county_to_county_flow_moe` int 
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+WITH SERDEPROPERTIES (
+  'serialization.format' = ',',
+  'field.delim' = ','
+) LOCATION 's3://census-outflow-data/'
+TBLPROPERTIES ('has_encrypted_data'='false');
