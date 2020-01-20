@@ -3,7 +3,7 @@
 ### Description
 This is a project to upload census data to Amazon S3 and query it from Amazon Athena.   
 
-Out of AWS EC2, AWS S3, AWS Athena, AWS Sagemaker, and AWS EMR, I chose to use AWS S3 and AWS Athena, because this is all we need in order to store and query the data. S3 is for storage, and Athena is for querying. I create the cloudformation stack using boto3 and the script in "cloudformation.txt" to make buckets in S3 and a database in Athena  
+Out of AWS EC2, AWS S3, AWS Athena, AWS Sagemaker, and AWS EMR, I chose to use AWS S3 and AWS Athena, because this is all we need in order to store and query the data. S3 is for storage, and Athena is for querying. Athena is also serverless, so there is no infrastructure that we need to manage, and we only pay for the queries. I create the cloudformation stack using boto3 and the template in "cloudformation.txt" to make buckets in S3 and a database in Athena.  
 
 Using python, I have uploaded the census datasets to S3. First, I convert the inflow and outflow excel sheets to csv files, because Athena cannot read xlsx, but it can read csv. Then, I remove the headers and footnotes from the csv files using RegEx. Finally, I upload the data to S3 using boto3.  
 
@@ -42,31 +42,20 @@ Default output format [None]: <not needed, leave blank and click enter>
 ```
 ---
 
-   Modules used (remove some of the pip installs)
+   Python Modules used (Use pip install if modules not installed)
 ---
-  * csv:
-  ```
-  pip install csv - I think python has it built in
-  ```  
-  * boto3:
+  * csv
+  * boto3
+  * RegEx
+  * os
+  * xlsx2csv
   ```
   pip install boto3
-  ```
-  * RegEx:
-   ```
-   python has it built in
-   ```
-  * os:
-  ```
-  pip install os - I think python has it built in
-  ```
-  * xlsx2csv:
-  ```
   pip install xlsx2csv
   ```
-
 ---
-## You need to change inflow, outflow, and output bucket names in the following files. The bucket names need to be unique across all of S3:
+
+## Change inflow, outflow, and output bucket names in the following files. The bucket names need to be unique across all of S3:
 
   - cloudformation/cloudformation.txt
   - inflow_bucket.txt
@@ -81,14 +70,16 @@ Default output format [None]: <not needed, leave blank and click enter>
 
 ---
 ## CloudFormation (need to be signed into aws) done
+Create a cloudformation stack to set up the bucket in S3 and the database in Athena
   - run create_stack.py
-  - this creates a cloudformation stack which sets up the bucket in S3 and the database in Athena
 
 ## Data Prep
+- Create CSV files from the inflow and outflow excel files
   - run excel_to_csv.py
-    - this creates CSVs from the inflow and outflow excel document
+
+- Clear the headers and footnotes from the CSV
   - run cleaning.py
-    - this clears the CSVs of headers and footnotes
+
   - run upload_to_s3.py
     - this uploads the CSV files to the bucket in S3
 
