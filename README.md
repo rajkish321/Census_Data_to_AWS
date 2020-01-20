@@ -118,7 +118,7 @@ Create tables in your database in Athena
     - Go to the Query Editor for Athena and make sure you have selected "censusdb" as your database
     - Enter your query and click "Run query"
   - Query through python script:
-    - In the queries folder, change the query.ddl file to the query you desire (using notepad again)
+    - In the queries folder, change the query.txt file to the query you desire
     - Run the python script and the output will be in your S3 output bucket
 
 ---
