@@ -14,14 +14,14 @@ Run 'create_stack.py' to create the cloudformation stack to set up the buckets i
 Out of AWS EC2, AWS S3, AWS Athena, AWS Sagemaker, and AWS EMR, I chose to use AWS S3 and AWS Athena, because this is all we need in order to store and query the data. S3 is for storage, and Athena is for querying. Athena is also serverless, so there is no infrastructure that we need to manage, and we only pay for the queries. I create the cloudformation stack using boto3 and the template in "cloudformation.txt" to make buckets in S3 and a database in Athena.  
 
 
-##### 2)Using a language of your choice, upload the Census datasets to your AWS services launched in step 1 (e.g., S3, EC2...)
+##### 2) Using a language of your choice, upload the Census datasets to your AWS services launched in step 1 (e.g., S3, EC2...)
 Run 'excel_to_csv.py' to convert the xlsx to csv files.  
 Run 'cleaning.py' to remove the headers and footnotes from the CSV files.  
 Run 'upload_to_s3.py' to upload the CSV files to your buckets in S3.
 
 
 Using python, I have uploaded the census datasets to S3. First, I convert the inflow and outflow excel sheets to csv files, because Athena cannot read xlsx, but it can read csv. Then, I remove the headers and footnotes from the csv files using RegEx. Finally, I upload the data to S3 using boto3.  
-##### 3)Load the pre-processed data into the service of choice (e.g., AWS Athena, AWS Sagemaker, AWS EMR)
+##### 3) Load the pre-processed data into the service of choice (e.g., AWS Athena, AWS Sagemaker, AWS EMR)
 Run 'createDB.py' to create the tables in your Athena database.
 
 Next, the data which was in S3 was loaded into the Athena database to create an inflow and outflow table. This was done with boto3 by uploading the query written in "inflow_table.ddl" and "outflow_table.ddl" (these are create table queries).
@@ -37,7 +37,7 @@ ORDER BY 3 DESC
 This query will return all of California's counties sorted by population in descending order. The result of this query is located in query_result/query_ex.csv
 
 
-##### 5)How much did this cost to run?
+##### 5) How much did this cost to run?
 To find the cost of this query, we can check the "History" tab in Athena, and see how much data has been scanned for that specific query. The pricing for Athena is $5 per TB. In this case, I scanned about 55 MB (55.35 MB) of data. So my cost would be about ($5/1024/1024) * 55 = $0.000262.
 
 ---
