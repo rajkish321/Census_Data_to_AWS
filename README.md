@@ -76,7 +76,7 @@ Default output format [None]: <not needed, leave blank and click enter>
   - tables/outflow_table.ddl
 
   ```diff
-  - for ddl files, open with notepad and at the bottom of the file, change __LOCATION 's3://census-inflow-data/'__ to __LOCATION 's3://\<YOUR_BUCKET_NAME>/'__
+  - for ddl files, open with notepad and at the bottom of the file, change __LOCATION 's3://census-inflow-data/'__ to __LOCATION 's3://<YOUR_BUCKET_NAME>/'__
   ```
 
 ---
