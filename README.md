@@ -73,10 +73,10 @@ Default output format [None]: <not needed, leave blank and click enter>
   - outflow_bucket.txt
   - output_bucket.txt
 
-  '''diff
+  ```diff
   - for ddl files, open with notepad and at the bottom, change
   __LOCATION 's3://census-inflow-data/'__ to __LOCATION 's3://\<YOUR_BUCKET_NAME>/'__
-'''
+```
   - tables/inflow_table.ddl
   - tables/outflow_table.ddl
 
