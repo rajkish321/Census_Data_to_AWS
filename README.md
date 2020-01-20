@@ -9,7 +9,7 @@ Using python, I have uploaded the census datasets to S3. First, I convert the in
 
 Next, I loaded the data which was in S3 into the database in Athena to create an inflow and outflow table. This was done with boto3 by uploading the query written in "inflow_table.ddl" and "outflow_table.ddl" (these are create table queries).
 
-## INSERT QUERY EXAMPLE HERE
+#### Query Example:
 ```
 SELECT curr_state, curr_county, SUM(curr_county_pop_est) AS pop
 FROM (SELECT DISTINCT curr_state,curr_county,curr_county_pop_est
@@ -46,7 +46,7 @@ Default output format [None]: <not needed, leave blank and click enter>
 ---
   * csv:
   ```
-  pip install csv
+  pip install csv - I think python has it built in
   ```  
   * boto3:
   ```
@@ -58,7 +58,7 @@ Default output format [None]: <not needed, leave blank and click enter>
    ```
   * os:
   ```
-  pip install os
+  pip install os - I think python has it built in
   ```
   * xlsx2csv:
   ```
@@ -66,16 +66,17 @@ Default output format [None]: <not needed, leave blank and click enter>
   ```
 
 ---
-## Need to change inflow, outflow, and output bucket names in the following files. The bucket names need to be very unique:
+## You need to change inflow, outflow, and output bucket names in the following files. The bucket names need to be unique across all of S3:
 
   - cloudformation/cloudformation.txt
   - inflow_bucket.txt
   - outflow_bucket.txt
   - output_bucket.txt
 
-  ### for ddl files, open with notepad and at the bottom, change
+  '''diff
+  - for ddl files, open with notepad and at the bottom, change
   __LOCATION 's3://census-inflow-data/'__ to __LOCATION 's3://\<YOUR_BUCKET_NAME>/'__
-
+'''
   - tables/inflow_table.ddl
   - tables/outflow_table.ddl
 
