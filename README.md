@@ -1,11 +1,6 @@
-# Title Name
+# Uploading Census Data to AWS S3 and Athena
 
-## Description
-
-
-
-
-Insert description here:  <!needs 2 spaces after line to have new line>  
+### Description
 This is a project to upload census data to Amazon S3 and query it from Amazon Athena.   
 
 Out of AWS EC2, AWS S3, AWS Athena, AWS Sagemaker, and AWS EMR, I chose to use AWS S3 and AWS Athena, because this is all we need in order to store and query the data. S3 is for storage, and Athena is for querying. I create the cloudformation stack using boto3 and the script in "cloudformation.txt" to make buckets in S3 and a database in Athena  
@@ -23,11 +18,11 @@ WHERE curr_state = 'California')
 GROUP BY curr_state, curr_county
 ORDER BY 3 DESC
 ```
-The result of this is located in query_result/query_ex.csv
+This query will return all of California's counties sorted by population in descending order. The result of this is located in query_result/query_ex.csv
 
 
 
-To find the cost of the query, we can check the "History" tab in Athena, and see how much data has been scanned for that specific query. The pricing for Athena is $5 per TB. In this case, I scanned about 55 MB of data. So my cost would be about ($5/1024/1024) * 55 = $0.000262.
+To find the cost of this query, we can check the "History" tab in Athena, and see how much data has been scanned for that specific query. The pricing for Athena is $5 per TB. In this case, I scanned about 55 MB (55.35 MB) of data. So my cost would be about ($5/1024/1024) * 55 = $0.000262.
 
 ---
 
