@@ -15,10 +15,19 @@ Using python, I have uploaded the census datasets to S3. First, I convert the in
 Next, I loaded the data which was in S3 into the database in Athena to create an inflow and outflow table. This was done with boto3 by uploading the query written in "inflow_table.ddl" and "outflow_table.ddl" (these are create table queries).
 
 ## INSERT QUERY EXAMPLE HERE
+```
+SELECT curr_state, curr_county, SUM(curr_county_pop_est) AS pop
+FROM (SELECT DISTINCT curr_state,curr_county,curr_county_pop_est
+FROM censusdb.inflow
+WHERE curr_state = 'California')
+GROUP BY curr_state, curr_county
+ORDER BY 3 DESC
+```
+The result of this is located in query_result/query_ex.csv
 
 
 
-To find the cost of the query, we can check our History, and see how much data has been scanned. The pricing for Athena is $5 per TB. In this case, we scanned about 55 MB of data. So our cost would be ($5/1024/1024) * 55 = $0.000262.
+To find the cost of the query, we can check the "History" tab in Athena, and see how much data has been scanned for that specific query. The pricing for Athena is $5 per TB. In this case, I scanned about 55 MB of data. So my cost would be about ($5/1024/1024) * 55 = $0.000262.
 
 ---
 
