@@ -41,6 +41,12 @@ Default region name [None]: <YOUR REGION NAME> (Northern VA is us-east-1)
 Default output format [None]: <not needed, leave blank and click enter>
 ```
 ---
+AWS Services used
+---
+  * S3
+  * Athena
+  * CloudFormation  
+
 
    Python Modules used (Use pip install if modules not installed)
 ---
@@ -74,22 +80,21 @@ Create a cloudformation stack to set up the bucket in S3 and the database in Ath
   - run create_stack.py
 
 ## Data Prep
-- Create CSV files from the inflow and outflow excel files
-  - run excel_to_csv.py
+Create CSV files from the inflow and outflow excel files
+  - run excel_to_csv.py  
 
-- Clear the headers and footnotes from the CSV
+Clear the headers and footnotes from the CSV
   - run cleaning.py
 
+Upload the CSV files to your buckets in S3
   - run upload_to_s3.py
-    - this uploads the CSV files to the bucket in S3
+
 
 ## Data Processing
+Create tables in your database in Athena
   - run createDB.py
-    - this creates tables in your database in Athena
-
 ---
-
-# Query
+## Query
 
   -You can query through Amazon Athena or query.py
 
