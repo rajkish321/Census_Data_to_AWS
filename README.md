@@ -76,7 +76,7 @@ Default output format [None]: <not needed, leave blank and click enter>
   - tables/outflow_table.ddl
 
   ```diff
-  - for ddl files, open with notepad and at the bottom, change __LOCATION 's3://census-inflow-data/'__ to __LOCATION 's3://\<YOUR_BUCKET_NAME>/'__
+  - for ddl files, open with notepad and at the bottom of the file, change __LOCATION 's3://census-inflow-data/'__ to __LOCATION 's3://\<YOUR_BUCKET_NAME>/'__
   ```
 
 ---
@@ -93,18 +93,18 @@ Default output format [None]: <not needed, leave blank and click enter>
     - this uploads the CSV files to the bucket in S3
 
 ## Data Processing
-  - run createDB
-    - this creates tables in the database of Athena
+  - run createDB.py
+    - this creates tables in your database in Athena
 
 ---
 
 # Query
 
-  -Either on Amazon Athena or through query.py
+  -You can query through Amazon Athena or query.py
 
   - Amazon Athena:
     - Go to the Query Editor for Athena and make sure you have selected "censusdb" as your database
-    - Type any query
+    - Enter your query and click "Run query"
   - Query through python script:
     - In the queries folder, change the query.ddl file to the query you desire (using notepad again)
-    - Run the python script and the output will be in your S3 bucket (It will go to your output bucket in S3)
+    - Run the python script and the output will be in your S3 output bucket
