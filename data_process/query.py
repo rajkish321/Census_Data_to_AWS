@@ -8,14 +8,13 @@ base_dir = os.path.dirname(os.path.dirname(__file__))
 
 
 ath = boto3.client('athena')
-query_ = base_dir + r'/queries/query.ddl'
+query_ = base_dir + r'/queries/query.txt'
 
 output_bucket = ''
 with open(base_dir + r'/output_bucket.txt','r') as file:
           output_bucket = file.read().replace('\n','')
 
-with open(query_) as ddl:
+with open(query_) as txt:
     ath.start_query_execution(
-        QueryString=ddl.read(),
+        QueryString=txt.read(),
         ResultConfiguration={'OutputLocation': output_bucket})
-
