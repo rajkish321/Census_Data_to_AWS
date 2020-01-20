@@ -1,4 +1,5 @@
-price of athena search: query size is about 54 MB per search, at $5 per TB, that is ($5/1024/1024)*54 = $0.00025749206
+The pricing for Athena is $5 per TB. In this case, I scanned about 55 MB (55.35 MB) of data.
+So my cost would be about ($5/1024/1024) * 55 = $0.000262.
 
-
-price of s3: every 
+The pricing for S3 is $0.005 per 1,000 PUT, COPY, POST, or LIST requests.
+For this project, we will not be having that many requests, so it will effectively cost nothing.
