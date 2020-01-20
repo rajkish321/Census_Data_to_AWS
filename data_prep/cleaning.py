@@ -1,8 +1,8 @@
+#this is to clean the data of headers and footnotes
 import re
 import csv
 import os
 
-#base_dir = r'C:/Users/rajki/Documents/JP_Morgan_assignment/final_submit/' #user needs to change
 base_dir = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -10,7 +10,7 @@ base_dir = os.path.dirname(os.path.dirname(__file__))
 csv_in = base_dir + r"/flows/in"
 csv_out = base_dir + r"/flows/out"
 
-#this is to clean the data of headers and footnotes
+
 
 
 print("start cleaning csv files")

@@ -1,8 +1,9 @@
+#This program queries Athena and stores the result in your output bucket in S3
+#To use this, you must put your query in in queries/query.txt
 import boto3
 import os
 
 
-#base_dir = r'C:/Users/rajki/Documents/JP_Morgan_assignment/final_submit/' #user needs to change
 base_dir = os.path.dirname(os.path.dirname(__file__))
 
 

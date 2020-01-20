@@ -1,7 +1,7 @@
+#This creates the CSV files from the inflow and outflow excel files
 from xlsx2csv import Xlsx2csv
 import os
 
-#base_dir = r'C:/Users/rajki/Documents/JP_Morgan_assignment/final_submit/' #user needs to change
 base_dir = os.path.dirname(os.path.dirname(__file__))
 
 

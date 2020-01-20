@@ -1,16 +1,14 @@
-#make sure you are connected to your aws account before running this
+#This uploads the csv files to your buckets in S3
 import boto3
 import os
 
-#base_dir = r'C:/Users/rajki/Documents/JP_Morgan_assignment/final_submit/' #user needs to change
 base_dir = os.path.dirname(os.path.dirname(__file__))
 
 bucketname_in = ''
 bucketname_out = ''
 
-#bucketname_in = 'census-data/census-inflow-data'
-#bucketname_out = 'census-data/census-outflow-data'
-
+# Make sure the names in inflow_bucket.txt and outflow_bucket.txt
+# contain bucket names that are valid 
 with open(base_dir + r'/inflow_bucket.txt','r') as file:
           bucketname_in = file.read().replace('\n','')
 
@@ -27,7 +25,7 @@ s3 = boto3.client('s3')
 
 s3.create_bucket(Bucket = bucketname_in)
 
-for file in os.listdir(csv_in): #for inflow csvs
+for file in os.listdir(csv_in): #for inflow CSVs
     if file.endswith(".csv"):
         filename = file[:-4]+' in'
         #print(filename)
@@ -37,7 +35,7 @@ for file in os.listdir(csv_in): #for inflow csvs
 
 s3.create_bucket(Bucket = bucketname_out)
 
-for file in os.listdir(csv_out): #for outflow csvs
+for file in os.listdir(csv_out): #for outflow CSVs
     if file.endswith(".csv"):
         filename = file[:-4]+' out'
         #print(filename)
