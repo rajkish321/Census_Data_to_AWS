@@ -18,7 +18,7 @@ WHERE curr_state = 'California')
 GROUP BY curr_state, curr_county
 ORDER BY 3 DESC
 ```
-This query will return all of California's counties sorted by population in descending order. The result of this is located in query_result/query_ex.csv
+This query will return all of California's counties sorted by population in descending order. The result of this is located in query_result/query_example.csv
 
 
 
