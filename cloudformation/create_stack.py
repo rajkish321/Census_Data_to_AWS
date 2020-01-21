@@ -1,4 +1,4 @@
-#This creates a cloudformation stack to set up the buckets in S3 and the database in Athena
+#This creates a cloudformation stack to set up the buckets in S3 and uses boto3 to set up the database in Athena
 import boto3
 import os
 
