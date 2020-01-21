@@ -28,7 +28,7 @@ Next, the data which was in S3 was loaded into the Athena database to create an 
 ##### 4) Run a simple aggregation or query on the Census data and include the results in your submission.
 ```
 SELECT curr_state,SUM(curr_county_pop_est) AS pop
-FROM (SELECT DISTINCT curr_state,curr_county_pop_est
+FROM (SELECT DISTINCT curr_state, curr_county, curr_county_pop_est
 FROM censusdb.inflow)
 GROUP BY curr_state
 ORDER BY 1
