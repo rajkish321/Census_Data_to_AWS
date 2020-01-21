@@ -1,5 +1,5 @@
 SELECT curr_state,SUM(curr_county_pop_est) AS pop
-FROM (SELECT DISTINCT curr_state,curr_county_pop_est
+FROM (SELECT DISTINCT curr_state, curr_county, curr_county_pop_est
 FROM censusdb.inflow)
 GROUP BY curr_state
 ORDER BY 1
