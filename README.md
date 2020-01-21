@@ -11,7 +11,7 @@ This is a project to upload census data to Amazon S3 and query it from Amazon At
 ######  b) Describe in detail why you chose your service and the design
 Run 'create_stack.py' to create the cloudformation stack to set up the buckets in S3 and the database in Athena
 
-Out of AWS EC2, AWS S3, AWS Athena, AWS Sagemaker, and AWS EMR, I chose to use AWS S3 and AWS Athena, because this is all we need in order to store and query the data. S3 is for storage, and Athena is for querying. Athena is also serverless, so there is no infrastructure that we need to manage, and we only pay for the queries. I create the cloudformation stack using boto3 and the template in "cloudformation.txt" to make buckets in S3 and a database in Athena.  
+Out of AWS EC2, AWS S3, AWS Athena, AWS Sagemaker, and AWS EMR, I chose to use AWS S3 and AWS Athena, because this is all we need in order to store and query the data. S3 is for storage, and Athena is for querying. Athena is also serverless, so there is no infrastructure that we need to manage, and we only pay for the queries. I create the cloudformation stack using boto3 and the template in "cloudformation.txt" to make buckets in S3. The database in Athena is also made with boto3  
 
 
 ##### 2) Using a language of your choice, upload the Census datasets to your AWS services launched in step 1 (e.g., S3, EC2...)
@@ -91,27 +91,27 @@ AWS Services used
 
 ---
 ### CloudFormation (make sure you are signed into aws)
-Create a cloudformation stack to set up the buckets in S3 and the database in Athena
+Create a cloudformation stack to set up the buckets in S3 and the database in Athena is made with boto3.
   - run 'create_stack.py'
 
 ### Data Prep
-Create CSV files from the inflow and outflow excel files
+Create CSV files from the inflow and outflow excel files.
   - run 'excel_to_csv.py'   
 
-Clear the headers and footnotes from the CSV files
+Clear the headers and footnotes from the CSV files.
   - run 'cleaning.py'
 
-Upload the CSV files to your buckets in S3
+Upload the CSV files to your buckets in S3.
   - run 'upload_to_s3.py'
 
 
 ### Data Processing
-Create tables in your database in Athena
+Create tables in your database in Athena.
   - run 'createDB.py'
 ---
 ### Query
 
-  -You can query through Amazon Athena or query.py
+  -You can query through Amazon Athena or query.py.
 
   - Amazon Athena:
     - Go to the Query Editor for Athena and make sure you have selected "censusdb" as your database
